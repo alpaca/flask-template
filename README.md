@@ -16,8 +16,9 @@ mkvirtualenv app
 pip install -r requirements.txt #install dependencies
 python manage.py db init #initialize database
 honcho --env=.secret start
-# FLASK_ENV=production honcho --env=.secret start # production mode
+# shoreman Procfile --env=.secret start # use bash shoreman instead of honcho
 # foreman --env=.secret start # using ruby foreman instead of honcho
+# add FLASK_ENV=production before honcho/foreman/shoreman to run in 'production' mode
 ```
 Edit configuration/connection/logging settings in the "alembic.ini" file inside the migrations folder before proceeding. 
 More info at : http://alembic.readthedocs.org/en/latest/tutorial.html#editing-the-ini-file
