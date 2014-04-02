@@ -1,21 +1,21 @@
-```shell
-python manage.py db init
-```
-
-create models and then
-
-```shell
-python manage.py db migrate
-```
-
 Development Setup
 ------------------
 
 ```shell
 mkvirtualenv app
 pip install -r requirements.txt
-honcho start
+python manage.py db init
+honcho --env=.secret start
+# FLASK_ENV=production honcho --env=.secret start # production mode
+# foreman --env=.secret start # using ruby foreman instead of honcho
 ```
+
+After Creating Models
+-------------------------
+```shell
+python manage.py db migrate
+```
+
 
 Production Setup
 ------------------
