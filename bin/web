@@ -1,0 +1,5 @@
+if [ "$FLASK_ENV" == "production" ]; then
+    gunicorn app:app
+else
+	python manage.py runserver
+fi

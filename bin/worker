@@ -1,0 +1,5 @@
+if [ "$FLASK_ENV" == "production" ]; then
+    celery worker -A app.tasks --loglevel=INFO
+else
+	celery worker -A app.tasks --loglevel=DEBUG
+fi
