@@ -11,7 +11,7 @@ http://www.rabbitmq.com/download.html
 Development Setup
 ------------------
 
-```shell
+```bash
 mkvirtualenv app
 pip install -r requirements.txt #install dependencies
 python manage.py db init #initialize database
@@ -25,14 +25,14 @@ If running honcho or foreman and both processes fail to start, you may
 end up with several different versions of a single process running. Use
 a variation of the command below to stop them.
 
-```shell
+```bash
 ps aux | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -9
 ps aux | grep 'python manage' | grep -v grep | awk '{print $2}' | xargs kill -9
 ps aux | grep 'gunicorn' | grep -v grep | awk '{print $2}' | xargs kill -9
 ```
 
 Use this to detect whether the processes are running.
-```shell
+```bash
 ps aux | egrep 'gunicorn|celery|manage.py'
 ```
 
@@ -44,20 +44,26 @@ More info at: https://pythonhosted.org/Flask-SQLAlchemy/models.html
 
 After Creating Models
 -------------------------
-```shell
+```bash
 python manage.py db migrate
+```
+
+Documenting Code
+-----------------
+```bash
+sphinx-quickstart
 ```
 
 Production Setup
 ------------------
 
 Heroku
-```shell
+```bash
 heroku config:set FLASK_ENV=production
 ```
 
 Dokku
-```shell
+```bash
 dokku config:set FLASK_ENV=production
 ```
 
