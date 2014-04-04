@@ -15,11 +15,27 @@ Development Setup
 mkvirtualenv app
 pip install -r requirements.txt #install dependencies
 python manage.py db init #initialize database
-honcho --env=.secret start
-# shoreman Procfile --env=.secret start # use bash shoreman instead of honcho
-# foreman --env=.secret start # using ruby foreman instead of honcho
-# add FLASK_ENV=production before honcho/foreman/shoreman to run in 'production' mode
+honcho start -e .secret
+foreman start -e .secret # alternative ruby version
 ```
+
+Add FLASK_ENV=production before honcho/foreman to run in 'production' mode
+
+If running honcho or foreman and both processes fail to start, you may 
+end up with several different versions of a single process running. Use
+a variation of the command below to stop them.
+
+```shell
+ps aux | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -9
+ps aux | grep 'python manage' | grep -v grep | awk '{print $2}' | xargs kill -9
+ps aux | grep 'gunicorn' | grep -v grep | awk '{print $2}' | xargs kill -9
+```
+
+Use this to detect whether the processes are running.
+```shell
+ps aux | egrep 'gunicorn|celery|manage.py'
+```
+
 Edit configuration/connection/logging settings in the "alembic.ini" file inside the migrations folder before proceeding. 
 More info at : http://alembic.readthedocs.org/en/latest/tutorial.html#editing-the-ini-file
 
@@ -35,21 +51,19 @@ python manage.py db migrate
 Production Setup
 ------------------
 
-Dokku
-```shell
-dokku config:set HEROKU=1
-dokku config:set C_FORCE_ROOT=true
-```
-
 Heroku
 ```shell
-heroku config:set HEROKU=1
-heroku config:set C_FORCE_ROOT=true
+heroku config:set FLASK_ENV=production
+```
+
+Dokku
+```shell
+dokku config:set FLASK_ENV=production
 ```
 
 Dokku Specific Instructions
 -----------------------------
-Dokku requires setting the RABBITMQ_URL manually.
+Dokku uses root account to run processes thus it requires C_FORCE_ROOT.
 ```
-dokku config:set RABBITMQ_URL='amqp://USER:PASS@GATEWAY:PORT
+dokku config:set C_FORCE_ROOT=True
 ```
