@@ -6,7 +6,14 @@ class Config(object):
     DEBUG = False
     TESTING = False
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql+psycopg2://postgres:postgres@localhost:5432/app_development')    
-    BROKER_URL = os.getenv('RABBITMQ_URL', 'amqp://')    
+    # BROKER_URL = os.getenv('RABBITMQ_URL', 'amqp://')
+
+    if os.getenv('BROKER_SCHEME', None) is not None
+        BROKER_URL = os.getenv('BROKER_SCHEME') + '://' + os.getenv('BROKER_USERNAME') + ':' + os.getenv('BROKER_PASSWORD') + '@' + os.getenv('BROKER_HOST') + ':' + os.getenv('BROKER_PORT') + os.getenv('BROKER_PATH')
+        print BROKER_URL
+    else:
+        BROKER_URL = 'ampq://'
+
     CELERY_RESULT_BACKEND = 'amqp'
     CELERY_TASK_SERIALIZER = 'json'
     CELERY_RESULT_SERIALIZER = 'json'
