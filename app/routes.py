@@ -4,7 +4,7 @@ from . import app
 from .tasks import celery
 from flask import render_template, request, redirect
 
-from app.tasks.addition import addition
+from app.tasks.sample import addition
 
 @app.route('/')
 def root():
