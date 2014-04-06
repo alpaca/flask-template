@@ -25,6 +25,8 @@ logging.warn("BROKER_PORT_15672_TCP_PORT: " + str(BROKER_PORT_15672_TCP_PORT))
 logging.warn("BROKER_PORT_5672_TCP_PORT: " + str(BROKER_PORT_5672_TCP_PORT))
 logging.warn("BROKER_PORT_5672_TCP_ADDR: " + str(BROKER_PORT_5672_TCP_ADDR))
 
+logging.warn(os.environ)
+
 class Config(object):
     DEBUG = False
     TESTING = False
