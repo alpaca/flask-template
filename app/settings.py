@@ -10,8 +10,15 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql+psycopg2://postgres:postgres@localhost:5432/app_development')    
     # BROKER_URL = os.getenv('RABBITMQ_URL', 'amqp://')
 
-    if os.getenv('BROKER_SCHEME', None) is not None:
-        BROKER_URL = os.getenv('BROKER_SCHEME') + '://' + os.getenv('BROKER_USERNAME') + ':' + os.getenv('BROKER_PASSWORD') + '@' + os.getenv('BROKER_HOST') + ':' + os.getenv('BROKER_PORT') + os.getenv('BROKER_PATH')
+    BROKER_SCHEME = os.getenv('BROKER_SCHEME', None)
+    BROKER_USERNAME = os.getenv('BROKER_USERNAME', None)
+    BROKER_PASSWORD = os.getenv('BROKER_PASSWORD', None)
+    BROKER_PORT = os.getenv('BROKER_PORT', None)
+    BROKER_HOST = os.getenv('BROKER_HOST', None)
+    BROKER_PATH = os.getenv('BROKER_PATH')
+
+    if BROKER_SCHEME is not None:
+        BROKER_URL = BROKER_SCHEME + '://' + BROKER_USERNAME + ':' + BROKER_PASSWORD + '@' + BROKER_HOST + ':' + BROKER_PORT + BROKER_PATH
     else:
         BROKER_URL = 'amqp://'
 
@@ -25,8 +32,22 @@ class Config(object):
     CELERY_REDIRECT_STDOUTS_LEVEL = 'DEBUG'
     CELERY_TRACK_STARTED = True
 
+    print "BROKER_SCHEME: " + BROKER_SCHEME
+    print "BROKER_USERNAME: " + BROKER_USERNAME
+    print "BROKER_PASSWORD: " + BROKER_PASSWORD
+    print "BROKER_PORT: " + BROKER_PORT
+    print "BROKER_HOST: " + BROKER_HOST
+    print "BROKER_PATH: " + BROKER_PATH
+
     print "BROKER_URL: " + BROKER_URL
     print "SQLALCHEMY_DATABASE_URI: " + SQLALCHEMY_DATABASE_URI
+
+    logging.warning(BROKER_SCHEME)
+    logging.warning(BROKER_USERNAME)
+    logging.warning(BROKER_PASSWORD)
+    logging.warning(BROKER_PORT)
+    logging.warning(BROKER_HOST)
+    logging.warning(BROKER_PATH)
     logging.warning(BROKER_URL)
 
 class Development(Config):
