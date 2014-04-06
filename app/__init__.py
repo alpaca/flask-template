@@ -14,11 +14,11 @@ from . import models
 from . import controllers
 from . import routes
 
-app.logger.addHandler(settings.log_handler)
-
 if not app.debug:
     app.logger.setLevel(logging.INFO)
-    log_handler.setLevel(logging.INFO)
+    settings.log_handler.setLevel(logging.INFO)
 else:
     app.logger.setLevel(logging.DEBUG)
-    log_handler.setLevel(logging.DEBUG)
+    settings.log_handler.setLevel(logging.DEBUG)
+
+app.logger.addHandler(settings.log_handler)
