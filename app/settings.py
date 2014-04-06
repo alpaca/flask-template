@@ -23,22 +23,22 @@ class Config(object):
     print "BROKER_SCHEME: " + BROKER_SCHEME
     print "BROKER_USERNAME: " + BROKER_USERNAME
     print "BROKER_PASSWORD: " + BROKER_PASSWORD
-    print "BROKER_PORT: " + BROKER_PORT
-    print "BROKER_HOST: " + BROKER_HOST
+    print "BROKER_PORT: " + str(BROKER_PORT)
+    print "BROKER_HOST: " + str(BROKER_HOST)
     print "BROKER_PATH: " + BROKER_PATH
     print "BROKER_PORT_15672_TCP_PORT: " + BROKER_PORT_15672_TCP_PORT
     print "BROKER_PORT_5672_TCP_PORT: " + BROKER_PORT_5672_TCP_PORT
     print "BROKER_PORT_5672_TCP_ADDR: " + BROKER_PORT_5672_TCP_ADDR
 
-    logging.warning(BROKER_SCHEME)
-    logging.warning(BROKER_USERNAME)
-    logging.warning(BROKER_PASSWORD)
-    logging.warning(BROKER_PORT)
-    logging.warning(BROKER_HOST)
-    logging.warning(BROKER_PATH)
-    logging.warning(BROKER_PORT_15672_TCP_PORT)
-    logging.warning(BROKER_PORT_5672_TCP_PORT)
-    logging.warning(BROKER_PORT_5672_TCP_ADDR)
+    # logging.warning(BROKER_SCHEME)
+    # logging.warning(BROKER_USERNAME)
+    # logging.warning(BROKER_PASSWORD)
+    # logging.warning(BROKER_PORT)
+    # logging.warning(BROKER_HOST)
+    # logging.warning(BROKER_PATH)
+    # logging.warning(BROKER_PORT_15672_TCP_PORT)
+    # logging.warning(BROKER_PORT_5672_TCP_PORT)
+    # logging.warning(BROKER_PORT_5672_TCP_ADDR)
 
     if BROKER_SCHEME is not None:
         BROKER_URL = BROKER_SCHEME + '://' + BROKER_USERNAME + ':' + BROKER_PASSWORD + '@' + BROKER_HOST + ':' + BROKER_PORT + BROKER_PATH
