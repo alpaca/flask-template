@@ -8,7 +8,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql+psycopg2://postgres:postgres@localhost:5432/app_development')    
     # BROKER_URL = os.getenv('RABBITMQ_URL', 'amqp://')
 
-    if os.getenv('BROKER_SCHEME', None) is not None
+    if os.getenv('BROKER_SCHEME', None) is not None:
         BROKER_URL = os.getenv('BROKER_SCHEME') + '://' + os.getenv('BROKER_USERNAME') + ':' + os.getenv('BROKER_PASSWORD') + '@' + os.getenv('BROKER_HOST') + ':' + os.getenv('BROKER_PORT') + os.getenv('BROKER_PATH')
         print BROKER_URL
     else:
