@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import os
+import logging
+
 
 class Config(object):
     DEBUG = False
@@ -25,6 +27,7 @@ class Config(object):
 
     print "BROKER_URL: " + BROKER_URL
     print "SQLALCHEMY_DATABASE_URI: " + SQLALCHEMY_DATABASE_URI
+    logging.warning(BROKER_URL)
 
 class Development(Config):
     DEBUG = True
