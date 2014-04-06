@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import os
-import logging
-
 
 class Config(object):
     DEBUG = False
@@ -10,38 +8,30 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql+psycopg2://postgres:postgres@localhost:5432/app_development')    
     # BROKER_URL = os.getenv('RABBITMQ_URL', 'amqp://')
 
-    BROKER_SCHEME = os.getenv('BROKER_SCHEME', None)
-    BROKER_USERNAME = os.getenv('BROKER_USERNAME', None)
-    BROKER_PASSWORD = os.getenv('BROKER_PASSWORD', None)
-    BROKER_PORT = os.getenv('BROKER_PORT', None)
-    BROKER_HOST = os.getenv('BROKER_HOST', None)
-    BROKER_PATH = os.getenv('BROKER_PATH', None)
-    BROKER_PORT_15672_TCP_PORT = os.getenv('BROKER_PORT_15672_TCP_PORT', None)
-    BROKER_PORT_5672_TCP_PORT = os.getenv('BROKER_PORT_5672_TCP_PORT', None)
-    BROKER_PORT_5672_TCP_ADDR = os.getenv('BROKER_PORT_5672_TCP_ADDR', None)
+    BROKER_SCHEME = os.getenv('BROKER_SCHEME', "")
+    BROKER_USERNAME = os.getenv('BROKER_USERNAME', "")
+    BROKER_PASSWORD = os.getenv('BROKER_PASSWORD', "")
+    BROKER_AMQP_PORT = os.getenv('BROKER_AMQP_PORT', "")
+    BROKER_ADMIN_PORT = os.getenv('BROKER_ADMIN_PORT', "")
+    BROKER_HOST = os.getenv('BROKER_HOST', "")
+    BROKER_PATH = os.getenv('BROKER_PATH', "")
+    BROKER_PORT_15672_TCP_PORT = os.getenv('BROKER_PORT_15672_TCP_PORT', "")
+    BROKER_PORT_5672_TCP_PORT = os.getenv('BROKER_PORT_5672_TCP_PORT', "")
+    BROKER_PORT_5672_TCP_ADDR = os.getenv('BROKER_PORT_5672_TCP_ADDR', "")
 
     print "BROKER_SCHEME: " + str(BROKER_SCHEME)
     print "BROKER_USERNAME: " + str(BROKER_USERNAME)
     print "BROKER_PASSWORD: " + str(BROKER_PASSWORD)
-    print "BROKER_PORT: " + str(BROKER_PORT)
+    print "BROKER_AMQP_PORT: " + str(BROKER_AMQP_PORT)
+    print "BROKER_ADMIN_PORT: " + str(BROKER_ADMIN_PORT)
     print "BROKER_HOST: " + str(BROKER_HOST)
     print "BROKER_PATH: " + str(BROKER_PATH)
     print "BROKER_PORT_15672_TCP_PORT: " + str(BROKER_PORT_15672_TCP_PORT)
     print "BROKER_PORT_5672_TCP_PORT: " + str(BROKER_PORT_5672_TCP_PORT)
     print "BROKER_PORT_5672_TCP_ADDR: " + str(BROKER_PORT_5672_TCP_ADDR)
 
-    # logging.warning(BROKER_SCHEME)
-    # logging.warning(BROKER_USERNAME)
-    # logging.warning(BROKER_PASSWORD)
-    # logging.warning(BROKER_PORT)
-    # logging.warning(BROKER_HOST)
-    # logging.warning(BROKER_PATH)
-    # logging.warning(BROKER_PORT_15672_TCP_PORT)
-    # logging.warning(BROKER_PORT_5672_TCP_PORT)
-    # logging.warning(BROKER_PORT_5672_TCP_ADDR)
-
     if BROKER_SCHEME is not None:
-        BROKER_URL = BROKER_SCHEME + '://' + BROKER_USERNAME + ':' + BROKER_PASSWORD + '@' + BROKER_HOST + ':' + BROKER_PORT + BROKER_PATH
+        BROKER_URL = BROKER_SCHEME + '://' + BROKER_USERNAME + ':' + BROKER_PASSWORD + '@' + BROKER_HOST + ':' + BROKER_AMQP_PORT + BROKER_PATH
     else:
         BROKER_URL = 'amqp://'
 
