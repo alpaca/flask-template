@@ -10,9 +10,8 @@ class Config(object):
 
     if os.getenv('BROKER_SCHEME', None) is not None:
         BROKER_URL = os.getenv('BROKER_SCHEME') + '://' + os.getenv('BROKER_USERNAME') + ':' + os.getenv('BROKER_PASSWORD') + '@' + os.getenv('BROKER_HOST') + ':' + os.getenv('BROKER_PORT') + os.getenv('BROKER_PATH')
-        print BROKER_URL
     else:
-        BROKER_URL = 'ampq://'
+        BROKER_URL = 'amqp://'
 
     CELERY_RESULT_BACKEND = 'amqp'
     CELERY_TASK_SERIALIZER = 'json'
@@ -23,6 +22,9 @@ class Config(object):
     CELERY_REDIRECT_STDOUTS = True
     CELERY_REDIRECT_STDOUTS_LEVEL = 'DEBUG'
     CELERY_TRACK_STARTED = True
+
+    print "BROKER_URL: " + BROKER_URL
+    print "SQLALCHEMY_DATABASE_URI: " + SQLALCHEMY_DATABASE_URI
 
 class Development(Config):
     DEBUG = True
