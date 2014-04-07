@@ -14,18 +14,18 @@ BROKER_PORT_15672_TCP_PORT = os.getenv('BROKER_PORT_15672_TCP_PORT', "")
 BROKER_PORT_5672_TCP_PORT = os.getenv('BROKER_PORT_5672_TCP_PORT', "")
 BROKER_PORT_5672_TCP_ADDR = os.getenv('BROKER_PORT_5672_TCP_ADDR', "")
 
-logging.warn("BROKER_SCHEME: " + str(BROKER_SCHEME))
-logging.warn("BROKER_USERNAME: " + str(BROKER_USERNAME))
-logging.warn("BROKER_PASSWORD: " + str(BROKER_PASSWORD))
-logging.warn("BROKER_AMQP_PORT: " + str(BROKER_AMQP_PORT))
-logging.warn("BROKER_ADMIN_PORT: " + str(BROKER_ADMIN_PORT))
-logging.warn("BROKER_HOST: " + str(BROKER_HOST))
-logging.warn("BROKER_PATH: " + str(BROKER_PATH))
-logging.warn("BROKER_PORT_15672_TCP_PORT: " + str(BROKER_PORT_15672_TCP_PORT))
-logging.warn("BROKER_PORT_5672_TCP_PORT: " + str(BROKER_PORT_5672_TCP_PORT))
-logging.warn("BROKER_PORT_5672_TCP_ADDR: " + str(BROKER_PORT_5672_TCP_ADDR))
+# logging.warn("BROKER_SCHEME: " + str(BROKER_SCHEME))
+# logging.warn("BROKER_USERNAME: " + str(BROKER_USERNAME))
+# logging.warn("BROKER_PASSWORD: " + str(BROKER_PASSWORD))
+# logging.warn("BROKER_AMQP_PORT: " + str(BROKER_AMQP_PORT))
+# logging.warn("BROKER_ADMIN_PORT: " + str(BROKER_ADMIN_PORT))
+# logging.warn("BROKER_HOST: " + str(BROKER_HOST))
+# logging.warn("BROKER_PATH: " + str(BROKER_PATH))
+# logging.warn("BROKER_PORT_15672_TCP_PORT: " + str(BROKER_PORT_15672_TCP_PORT))
+# logging.warn("BROKER_PORT_5672_TCP_PORT: " + str(BROKER_PORT_5672_TCP_PORT))
+# logging.warn("BROKER_PORT_5672_TCP_ADDR: " + str(BROKER_PORT_5672_TCP_ADDR))
 
-logging.warn(os.environ)
+# logging.warn(os.environ)
 
 class Config(object):
     DEBUG = False
@@ -37,6 +37,8 @@ class Config(object):
         BROKER_URL = BROKER_SCHEME + '://' + BROKER_USERNAME + ':' + BROKER_PASSWORD + '@' + BROKER_HOST + ':' + BROKER_AMQP_PORT + BROKER_PATH
     else:
         BROKER_URL = 'amqp://'
+
+    logging.warn(BROKER_URL)
 
     CELERY_RESULT_BACKEND = 'amqp'
     CELERY_TASK_SERIALIZER = 'json'
