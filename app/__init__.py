@@ -26,8 +26,6 @@ app.logger.addHandler(settings.log_handler)
 from .models import db
 from .models.user import User
 
-db.create_all()
-
 # Example SQLAlchemy Use
 
 # from sqlalchemy.exc import IntegrityError
