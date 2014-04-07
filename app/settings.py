@@ -34,7 +34,7 @@ class Config(object):
     # BROKER_URL = os.getenv('RABBITMQ_URL', 'amqp://')
 
     if BROKER_SCHEME is not None:
-        BROKER_URL = BROKER_SCHEME + '://' + BROKER_USERNAME + ':' + BROKER_PASSWORD + '@' + '172.17.42.1' + ':' + BROKER_AMQP_PORT + BROKER_PATH
+        BROKER_URL = BROKER_SCHEME + '://' + BROKER_USERNAME + ':' + BROKER_PASSWORD + '@' + BROKER_HOST + ':' + BROKER_ADMIN_PORT + BROKER_PATH
     else:
         BROKER_URL = 'amqp://'
 

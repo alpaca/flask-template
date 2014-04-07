@@ -75,3 +75,5 @@ dokku config:set C_FORCE_ROOT=True
 ```
 
 sudo docker run -t --link rabbitmq_test-www:broker app/test-www:latest /bin/bash -c /start
+
+sudo docker run -i -t --link rabbitmq_test-www:broker app/test-www:latest /bin/bash
