@@ -3,7 +3,7 @@
 import os
 import logging
 
-BROKER_SCHEME = os.getenv('BROKER_SCHEME', "")
+BROKER_SCHEME = os.getenv('BROKER_SCHEME', None)
 BROKER_USERNAME = os.getenv('BROKER_USERNAME', "")
 BROKER_PASSWORD = os.getenv('BROKER_PASSWORD', "")
 BROKER_AMQP_PORT = os.getenv('BROKER_AMQP_PORT', "")

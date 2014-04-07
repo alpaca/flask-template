@@ -22,3 +22,21 @@ else:
     settings.log_handler.setLevel(logging.DEBUG)
 
 app.logger.addHandler(settings.log_handler)
+
+from .models import db
+from .models.user import User
+
+db.create_all()
+
+# Example SQLAlchemy Use
+
+# from sqlalchemy.exc import IntegrityError
+# # add something to the database...
+# try:
+# 	db.session.add(User(1,'TestUser','pwhash'))
+# 	db.session.commit()
+# # ...and retrieve it!
+# except IntegrityError:
+# 	db.session.rollback()
+
+# print User.query.filter_by(username='TestUser').first()
