@@ -3,40 +3,11 @@
 import os
 import logging
 
-BROKER_SCHEME = os.getenv('BROKER_SCHEME', None)
-BROKER_USERNAME = os.getenv('BROKER_USERNAME', "")
-BROKER_PASSWORD = os.getenv('BROKER_PASSWORD', "")
-BROKER_AMQP_PORT = os.getenv('BROKER_AMQP_PORT', "")
-BROKER_ADMIN_PORT = os.getenv('BROKER_ADMIN_PORT', "")
-BROKER_HOST = os.getenv('BROKER_HOST', "")
-BROKER_PATH = os.getenv('BROKER_PATH', "")
-BROKER_PORT_15672_TCP_PORT = os.getenv('BROKER_PORT_15672_TCP_PORT', "")
-BROKER_PORT_5672_TCP_PORT = os.getenv('BROKER_PORT_5672_TCP_PORT', "")
-BROKER_PORT_5672_TCP_ADDR = os.getenv('BROKER_PORT_5672_TCP_ADDR', "")
-
-# logging.warn("BROKER_SCHEME: " + str(BROKER_SCHEME))
-# logging.warn("BROKER_USERNAME: " + str(BROKER_USERNAME))
-# logging.warn("BROKER_PASSWORD: " + str(BROKER_PASSWORD))
-# logging.warn("BROKER_AMQP_PORT: " + str(BROKER_AMQP_PORT))
-# logging.warn("BROKER_ADMIN_PORT: " + str(BROKER_ADMIN_PORT))
-# logging.warn("BROKER_HOST: " + str(BROKER_HOST))
-# logging.warn("BROKER_PATH: " + str(BROKER_PATH))
-# logging.warn("BROKER_PORT_15672_TCP_PORT: " + str(BROKER_PORT_15672_TCP_PORT))
-# logging.warn("BROKER_PORT_5672_TCP_PORT: " + str(BROKER_PORT_5672_TCP_PORT))
-# logging.warn("BROKER_PORT_5672_TCP_ADDR: " + str(BROKER_PORT_5672_TCP_ADDR))
-
-# logging.warn(os.environ)
-
 class Config(object):
     DEBUG = False
     TESTING = False
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql+psycopg2://postgres:postgres@localhost:5432/app_development')    
-    # BROKER_URL = os.getenv('RABBITMQ_URL', 'amqp://')
-
-    if BROKER_SCHEME is not None:
-        BROKER_URL = BROKER_SCHEME + '://' + BROKER_USERNAME + ':' + BROKER_PASSWORD + '@' + BROKER_HOST + ':' + BROKER_ADMIN_PORT + BROKER_PATH
-    else:
-        BROKER_URL = 'amqp://'
+    BROKER_URL = os.getenv('BROKER_URL', 'amqp://')
 
     logging.warn(BROKER_URL)
 
