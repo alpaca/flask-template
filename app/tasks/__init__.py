@@ -32,4 +32,6 @@ def make_celery(flask_app):
 
 celery = make_celery(flask_app)
 
+__all__ = ['sample']
+
 from app.tasks import *
