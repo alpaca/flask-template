@@ -2,7 +2,6 @@ Summary
 ------------------
 This flask-template allows you to easily deploy distributed applications.
 
-
 Getting Started
 ------------------
 Install RabbitMQ (We use RabbitMQ but the template supports any ampq implementation)
@@ -15,6 +14,7 @@ Development Setup
 mkvirtualenv app
 pip install -r requirements.txt #install dependencies
 python manage.py db init #initialize database
+touch .secret
 honcho start -e .secret
 foreman start -e .secret # alternative ruby version
 ```
