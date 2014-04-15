@@ -42,6 +42,13 @@ More info at : http://alembic.readthedocs.org/en/latest/tutorial.html#editing-th
 Create models in the "app/models" directory. 
 More info at: https://pythonhosted.org/Flask-SQLAlchemy/models.html
 
+
+Git Submodules
+---------------
+As you're developing non-domain specific python packages, you should use git submodules to add them to the lib folder. See this stackoverflow for how to do that: http://stackoverflow.com/questions/9189575/git-submodule-tracking-latest
+
+Using git submodules helps you easily go back and forth between both codebases.
+
 After Creating Models
 -------------------------
 ```bash
