@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "$FLASK_ENV" == "production" ]; then
+    celery worker -A app.tasks --loglevel=INFO -b=$RABBITMQ_URL --concurrency=1000 --pool=gevent
+else
+	celery worker -A app.tasks --loglevel=DEBUG -b=$RABBITMQ_URL --concurrency=1000 --pool=gevent
+fi
