@@ -26,11 +26,7 @@ end up with several different versions of a single process running. Use
 a variation of the command below to stop them.
 
 ```bash
-ps aux | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -9
-ps aux | grep 'python manage' | grep -v grep | awk '{print $2}' | xargs kill -9
-ps aux | grep 'gunicorn' | grep -v grep | awk '{print $2}' | xargs kill -9
-ps aux | grep 'flower' | grep -v grep | awk '{print $2}' | xargs kill -9
-
+ps aux | egrep 'celery worker|python manage|gunicorn|flower' | grep -v grep | awk '{print $2}' | xargs kill -9
 ```
 
 Use this to detect whether the processes are running.
