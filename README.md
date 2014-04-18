@@ -79,6 +79,19 @@ Dokku uses root account to run processes thus it requires C_FORCE_ROOT.
 dokku config:set C_FORCE_ROOT=True
 ```
 
+Flask-Migrate (alembic)
+------------------------
+```bash
+python manage.py db init
+```
+```bash
+python manage.py db migrate
+```
+```bash
+python manage.py db upgrade
+```
+Don't forget to drop alembic_version table from your DB!
+
 sudo docker run -t --link rabbitmq_test-www:broker app/test-www:latest /bin/bash -c /start
 
 sudo docker run -i -t --link rabbitmq_test-www:broker app/test-www:latest /bin/bash
