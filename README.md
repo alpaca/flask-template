@@ -34,6 +34,11 @@ Use this to detect whether the processes are running.
 ps aux | egrep 'gunicorn|celery|manage.py'
 ```
 
+Use this to clear all celery tasks from rabbitmq.
+```bash
+rabbitmqctl stop_app && rabbitmqctl reset && rabbitmqctl start_app
+```
+
 Edit configuration/connection/logging settings in the "alembic.ini" file inside the migrations folder before proceeding. 
 More info at : http://alembic.readthedocs.org/en/latest/tutorial.html#editing-the-ini-file
 
